@@ -646,8 +646,7 @@ input_scene_path|场景路径|Y|字符串|512|场景文件路径，必须提前�
 cg_soft_name|渲染软件|Y|字符串|64|渲染软件。|
 frames|提交帧|Y|字符串|64|要渲染的帧。|
 plugin_name|渲染插件|N|字符串|512|多个插件以逗号分隔。|
-### 10.5.1
-Blender请求示例
+### 10.5.1Blender请求示例
  ```python
 {
   "head": {
