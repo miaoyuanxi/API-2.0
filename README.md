@@ -33,7 +33,7 @@
 2. 文件的上传和下载可通过sync工具或aspera工具，上传时文件存储的相对路径为后续调用提交任务的关键参数。
 ## 5.3接口调用地址
 ### 5.3.1地址样例
-接口URL由协议类型、域名、接口版本号、操作对象及ID组成，如下：
+接口URL由协议类型、域名、接口版本号、操作对象及ID组成，如下：<br>
 <协议类型>://<平台域名>/api/<版本>/<模块>/  
 例如:(https://www5.renderbus.com/api/v2/task/)
 ### 5.3.2平台地址
@@ -43,7 +43,7 @@
 
 序号 | 类型编码 | 模块| 路径| 提供接口
 ---|---|---|---|---
-1 | 01 | 渲染任务 | row 1 col 4 | 1.提交任务<br>  2.查询任务列表<br>  3.操作任务\
+1 | 01 | 渲染任务 | row 1 col 4 | 1.提交任务<br>  2.查询任务列表<br>  3.操作任务
 2| 02 | 项目相关 | 同上 | 项目查询
 # 6.公共协议
 ## 6.1JSON格式
@@ -152,7 +152,7 @@ project_name | 项目名称 | N | 字符串 |32|精确查询 |
 is_sub_included | 是否包含子账号 | N | 整型 ||0：不包含（默认值）<br>1：包含| 
 is_jobs_included| 是否包含任务详情 | N | 整型 ||0：不包含（默认值）<br>1：包含| 
 is_logs_included| 是否显示渲染帧的详细日志 | N | 字符串 ||需要is_jobs_included为1时才有效。<br>0：不显示（默认值）<br>1：显示渲染日志| 
-task_status| 任务状态 | N |字符串||"Start"|"SubFailed"|"Stopped"|"System_Done"|"Failed"|"User_Stop"|"executing"|"Preprocessing"|"Analysed"|"Analysing"|"AnalyseFailed"| 
+task_status| 任务状态 | N |字符串||"Start"；"SubFailed"；<br>"Stopped"；"System_Done"；"Failed"；<br>"User_Stop"；"executing"；"Preprocessing"；<br>"Analysed"；"Analysing"；"AnalyseFailed" | 
 del_flag| 任务是否删除 | N | 整型 ||0未删除（默认值）<br>1查询删除任务| 
 task_type| 渲染软件 | N | 整型 ||0：主图<br>1：光子<br>2：光子+主图| 
 cg_soft_name| 任务是否删除 | N |字符串 |32|模糊查询| 
@@ -208,7 +208,7 @@ camera| 渲染相机| 字符串 |渲染相机|
 render_layer| 渲染层| 字符串 |渲染层|
 artist| 制作人| 字符串 |制作人|
 submit_account| 提交账号| 字符串 |提交该任务的实际账号|
-jobs| 任务详情| JSON数组 |只有当is_jobs_included为1时，此数据才会显示。<br>job_id：帧ID<br>job_name：帧名称<br>job_status：帧状态<br>start_time：开始时间,格式yyyyMMddHHmmss<br>end_time：结束时间，格式yyyyMMddHHmmss<br>consume_time：共耗时，单位s<br>log：渲染日志|
+jobs| 任务详情| JSON数组 |只有当is_jobs_included为1时，此数据才会显示。<br>job_id：帧ID<br>job_name：帧名称<br>job_status：帧状态<br>start_time：开始时间，格式yyyyMMddHHmmss<br>end_time：结束时间，格式yyyyMMddHHmmss<br>consume_time：共耗时，单位s<br>log：渲染日志|
 #### 7.1.2.3业务规则说明
 查询任务业务规则说明如下：
 1. 只能查询head参数中account用户（或其子账户）下的任务。
@@ -287,7 +287,7 @@ total_size| 数据条数|字符串|返回结果数据集合的总条数|
 字段名| 中文含义|数据类型|说明|
 ---  |---     |---    |---
 task_id| 任务ID|字符串|请求参数中的task_id|
-operate_result| 操作结果|字符串|0:成功；1:失败|
+operate_result| 操作结果|字符串|0:成功<br>1:失败|
 task_status| 任务状态|字符串|任务状态|
 #### 7.1.3.3业务规则说明
 任务操作有一定的业务规则限制，说明如下：
@@ -368,7 +368,7 @@ render_os|渲染系统|字符串|渲染系统|
 remark|项目备注|字符串|项目备注|
 customer_name|所属客户|字符串|所属客户|
 create_time|创建时间|字符串|创建时间|
-plugins|配置相关|JSON数组|config_id : 配置ID；cg_soft_name：渲染软件；plugin_name：渲染插件，如果某一软件下有多个插件，则以逗号分隔；is_default：该配置是否为默认配置。|
+plugins|配置相关|JSON数组|config_id : 配置ID<br>cg_soft_name：渲染软件<br>plugin_name：渲染插件，如果某一软件下有多个插件，则以逗号分隔<br>is_default：该配置是否为默认配置。|
 ### 7.2.2查询插件
 action：query_plugin
 #### 7.2.2.1请求参数
@@ -488,9 +488,9 @@ description|结果说明|字符串|如果失败的话，会有对于的结果说
 1010|access_key be disabled|
 1012|account not exist|
 1013|account be disabled|
-1020|null not permitted；注：未设置或空字符串|
-1021|parameter cast exception；注：用户请求字段均为字符串，而有时我们要转成整型或长整型来用|
-1022|illegal value；注：有些字段只能取特定值，之外均为非法值|
+1020|null not permitted<br>注：未设置或空字符串|
+1021|parameter cast exception<br>注：用户请求字段均为字符串，而有时我们要转成整型或长整型来用|
+1022|illegal value<br>注：有些字段只能取特定值，之外均为非法值|
 1023|parameter length exceed scope|
 1024|illegal characters be contained|	
 # 9.附录B Python SDK说明
