@@ -164,6 +164,7 @@ start_date_after| 开始时间大于等于 | N | 字符串 |32|格式：yyyy-MM-
 start_date_before| 开始时间小于等于 | N | 字符串 |32|格式：yyyy-MM-dd HH:mm:ss；<br>实例：2016-08-31 23:59:59|
 completed_date_after| 任务完成时间大于等于 | N | 字符串 |32|格式：yyyy-MM-dd HH:mm:ss；<br>实例：2016-08-31 23:59:59。<br>使用该参数时请指定任务状态为System_Done，否则不保证结果的正确性|
 completed_date_before| 任务完成时间小于等于 | N | 字符串 |32|格式：yyyy-MM-dd HH:mm:ss；<br>实例：2016-08-31 23:59:59。<br>使用该参数时请指定任务状态为System_Done，否则不保证结果的正确性| 
+fromWhere| 提交来源 | N | 字符串 ||api查询API提交的任务 web查询网页提交的任务| 
 task_over_time| 超时时间 | N | 字符串 ||任务的超时时间| 
 submit_account| 提交账号 | N | 字符串 |32|提交该任务的实际账号| 
 artist| 制作人 | N | 字符串 |32|模糊查询| 
