@@ -107,6 +107,7 @@ after_first_render|优先渲染类型|N|字符串||fullSpeed：优先渲染后�
 artist| 制作人 | N|字符串||制作人|
 submit_type| 提交类型 | N|整型||提交任务后是否直接开始渲染，默认为0。<br>0：直接开始渲染 <br>1：将任务设为停止状态|
 environments| 环境变量|N|字符串||设置系统的环境变量|
+priority| 优先级|N|整型||设置任务的优先级|
 #### 7.1.1.2返回值
 字段名 | 中文含义 | 参数类型|  说明
 ---|---|---|---
@@ -280,7 +281,8 @@ action：operate_task
 task_id| 任务ID|Y|字符串|256|支持批量操作，批量时id用半角逗号隔开|
 operate_order| 操作指令|Y|整型| |0：暂停任务<br>1：重提任务<br>2：删除任务<br>3：修改任务参数|
 restart_type| 重提类型|N|整型| |0：重提失败帧<br>1：重提放弃帧<br>2：重提完成帧<br>3：重提开始帧<br>4：重提等待帧<br>当operate_order 为1时，该字段需填值。否则默认为0|
-task_over_time| 超时时间|N|整型| |operate_order为3时会修改超时时间。|
+task_over_time| 超时时间|N|整型| |operate_order为3时用于修改超时时间。|
+priority| 优先级|N|整型||operate_order为3时用于修改优先级。|
 #### 7.1.3.2返回值
 字段名| 中文含义|数据类型|说明|
 ---|---|---|---
@@ -516,6 +518,7 @@ tiles|分块渲染|N|字符串|32|V1.0版本可不使用|
 timeout|超时时间|N|整型||单位秒|
 camera|渲染相机|N|字符串|64|渲染相机|
 environments|环境变量|N|字符串||设置系统的环境变量|
+priority| 优先级|N|整型||设置任务的优先级|
 ## 10.2Sketchup任务提交参数
 	action：create_sketchup_task
 字段名|中文含义|是否必填|参数类型|最大长度|说明|
@@ -535,6 +538,7 @@ render_type|渲染类型|Y|整型|64|1表示动画渲染<br>2表示效果图渲�
 total_frame|总帧数|N|整型||仅适用于动画渲染。|
 total_time|	总时长|N|整型||仅适用于动画渲染。|
 environments|环境变量|N|字符串|||
+priority| 优先级|N|整型||设置任务的优先级|
 ## 10.3 VRStandalone任务提交参数
 	action：create_vrstandalone_task
 字段名|中文含义|是否必填|参数类型|最大长度|说明|
@@ -555,6 +559,7 @@ after_first_render|优先渲染类型|N|字符串||fullSpeed：优先渲染后�
 artist| 制作人 | N|字符串||制作人|
 environments|环境变量|N|字符串||设置系统的环境变量。|
 limitHosts|分部署机器数量|N|字符串||大于1：进行分布式渲染，机器数量为给的值<br>不填或小于等于1：不进行分布式渲染。|
+priority| 优先级|N|整型||设置任务的优先级|
 ### 10.3.1注意事项
 VRStandalone只支持一帧一个文件，如果一个场景文件中含有多帧，请重新生成。
 ### 10.3.2VRStandalone请求示例
@@ -599,6 +604,7 @@ first_frames|优先渲染帧|N|字符串||平台将优先渲染并最多提供�
 after_first_render|优先渲染类型|N|字符串||fullSpeed：优先渲染后，自动全速渲染<br>stop：优先渲染后，停止任务
 artist| 制作人 | N|字符串||制作人|
 environments|环境变量|N|字符串|512|设置系统的环境变量。| 
+priority| 优先级|N|整型||设置任务的优先级|
 ### 10.4.1houdini请求示例
 layer_list是个json数组，里可以包含多个节点
  ```python
@@ -641,6 +647,7 @@ first_frames|优先渲染帧|N|字符串||平台将优先渲染并最多提供�
 after_first_render|优先渲染类型|N|字符串||fullSpeed：优先渲染后，自动全速渲染<br>stop：优先渲染后，停止任务
 artist| 制作人 | N|字符串||制作人|
 plugin_name|渲染插件|N|字符串|512|多个插件以逗号分隔。|
+priority| 优先级|N|整型||设置任务的优先级|
 ### 10.5.1Blender请求示例
  ```python
 {
