@@ -101,7 +101,7 @@ timeout| 分块渲染| N |整型 ||单位秒|
 plugin_name| 渲染插件| N |字符串|512|多个插件以逗号分隔|
 camera| 渲染相机| N |字符串|64|渲染相机|
 render_layer| 渲染层 | N|字符串|64|渲染层|
-remark| 备注 | N|字符串||任务备注|
+user_remark| 备注 | N|字符串||任务备注|
 first_frames|优先渲染帧|N|字符串||平台将优先渲染并最多提供三台机器渲染优先帧，用逗号隔开,例如1,3,5必须与下面的参数结合才有效。|
 after_first_render|优先渲染类型|N|字符串||fullSpeed：优先渲染后，自动全速渲染<br>stop：优先渲染后，停止任务
 artist| 制作人 | N|字符串||制作人|
@@ -355,7 +355,7 @@ plugin_name|渲染插件|N|字符串|32|精确查询，即插件名称要正确�
 plugin_name|渲染插件|N|字符串|32|精确查询，即插件名称要正确，否则将得不到结果|
 render_os|渲染系统|N|字符串||Windows|Linux|
 is_default|是否是默认配置|N|整型||0：否（默认值）<br>1：是|
-remark|项目备注|N|字符串|256|模糊查询|
+user_remark|项目备注|N|字符串|256|模糊查询|
 sub_account|子账户|N|字符串|32|查询该子账户下的项目|
 is_sub_included|是否包含子账户|N|整型||0：否（默认值）<br>1：是|
 #### 7.2.1.2返回值
@@ -370,7 +370,7 @@ project_id|项目id|字符串|项目id|
 project_name|项目名称|字符串|项目名称|
 project_path|工程路径|字符串|工程路径|
 render_os|渲染系统|字符串|渲染系统|
-remark|项目备注|字符串|项目备注|
+user_remark|项目备注|字符串|项目备注|
 customer_name|所属客户|字符串|所属客户|
 create_time|创建时间|字符串|创建时间|
 plugins|配置相关|JSON数组|config_id : 配置ID<br>cg_soft_name：渲染软件<br>plugin_name：渲染插件，如果某一软件下有多个插件，则以逗号分隔<br>is_default：该配置是否为默认配置。|
@@ -394,7 +394,7 @@ action：create_project
 project_name|项目名称|Y|字符串|20|数字或英文字母（不区分大小写）|
 project_path|项目路径|N|字符串|256|项目路径|
 render_os|渲染系统|N|字符串||Windows|Linux|
-remark|项目备注|N|字符串|256|备注|
+user_remark|项目备注|N|字符串|256|备注|
 sub_account|子账户|N|字符串|32|该项目的所有者，如果为空，则取head里的account|
 #### 7.2.3.2返回值
 字段名|中文含义|数据类型|说明|
@@ -412,7 +412,7 @@ sub_account|子账户|N|字符串|32|所操作项目所属账户，默认为head
 project_name|项目名称|N|字符串|20|数字或英文字母（不区分大小写）。|
 project_path|项目路径|N|字符串|256|项目路径|
 render_os|渲染系统|N|字符串||Windows|Linux|
-remark|项目备注|N|字符串|256|备注|
+user_remark|项目备注|N|字符串|256|备注|
 operate_type|配置操作类型|N|||0：新增<br>1：修改<br>2：删除<br>如果该字段为空，则下面三个参数将被忽略。|
 config_id|配置ID|N|整型||新增操作，该字段如果存在，将被忽略<br>修改操作，如果该字段为空，则返回失败<br>删除操作，如果该字段为空，则删除所有。|
 cg_soft_name|渲染软件|N|字符串|32|新增和修改操作，渲染软件不能为空，否则返回错误。|
