@@ -97,7 +97,7 @@ image_height| 像素高 | N | 整型 |||
 attr1| 扩展使用| N |字符串 |64|V1.0版本可不使用|
 attr2| 扩展使用| N |字符串 |4000|V1.0版本可不使用|
 tiles| 分块渲染| N |字符串 |32|V1.0版本可不使用|
-timeout| 分块渲染| N |整型 ||单位秒|
+timeout| 超时时间| N |浮点型 ||单位小时|
 plugin_name| 渲染插件| N |字符串|512|多个插件以逗号分隔|
 camera| 渲染相机| N |字符串|64|渲染相机|
 render_layer| 渲染层 | N|字符串|64|渲染层|
@@ -169,6 +169,7 @@ fromWhere| 提交来源 | N | 字符串 ||api查询API提交的任务 web查询�
 task_over_time| 超时时间 | N | 字符串 ||任务的超时时间| 
 submit_account| 提交账号 | N | 字符串 |32|提交该任务的实际账号| 
 artist| 制作人 | N | 字符串 |32|模糊查询| 
+user_remark| 任务备注 | N | 字符串 |256|模糊查询| 
 sort_code| 排序码 | N | 整型 ||0：任务ID排序<br>1：任务状态排序<br>2：任务提交时间排序| 
 sort_type| 排序方式 | N | 整型 ||0：顺序（默认值）<br>1：倒序只有当sort_code不为空时，该字段才生效。| 
 is_paging| 是否分页 | N | 整型 ||0：不分页（默认值）<br>1：分页。| 
@@ -197,7 +198,6 @@ frames| 渲染帧| 字符串 | 格式：1-10[1]。|
 task_type| 任务类型| 字符串 | 0：主图<br>1：光子<br>2：光子+主图|
 frames| 渲染帧| 字符串 | 格式：1-10[1]。|
 done| 成功帧数| 字符串 |已经渲染成功的帧数图|
-failed| 失败帧数| 字符串 |正在执行渲染的帧数|
 failed| 失败帧数| 字符串 |渲染失败的帧数|
 executing| 执行帧数| 字符串 |正在执行渲染的帧数|
 waiting| 等待帧数| 字符串 |等待渲染的帧数|
@@ -515,10 +515,11 @@ output_file_format|输出文件格式|N|字符串|64|为空时，则按默认格
 image_width|像素宽|N|整型|||
 image_height|像素高|N|整型|||
 tiles|分块渲染|N|字符串|32|V1.0版本可不使用|
-timeout|超时时间|N|整型||单位秒|
+timeout|超时时间|N|浮点型||单位小时|
 camera|渲染相机|N|字符串|64|渲染相机|
 environments|环境变量|N|字符串||设置系统的环境变量|
 priority| 优先级|N|整型||设置任务的优先级|
+user_remark| 备注 | N|字符串||任务备注|
 ## 10.2Sketchup任务提交参数
 	action：create_sketchup_task
 字段名|中文含义|是否必填|参数类型|最大长度|说明|
@@ -539,6 +540,7 @@ total_frame|总帧数|N|整型||仅适用于动画渲染。|
 total_time|	总时长|N|整型||仅适用于动画渲染。|
 environments|环境变量|N|字符串|||
 priority| 优先级|N|整型||设置任务的优先级|
+user_remark| 备注 | N|字符串||任务备注|
 ## 10.3 VRStandalone任务提交参数
 	action：create_vrstandalone_task
 字段名|中文含义|是否必填|参数类型|最大长度|说明|
@@ -560,6 +562,7 @@ artist| 制作人 | N|字符串||制作人|
 environments|环境变量|N|字符串||设置系统的环境变量。|
 limitHosts|分部署机器数量|N|字符串||大于1：进行分布式渲染，机器数量为给的值<br>不填或小于等于1：不进行分布式渲染。|
 priority| 优先级|N|整型||设置任务的优先级|
+user_remark| 备注 | N|字符串||任务备注|
 ### 10.3.1注意事项
 VRStandalone只支持一帧一个文件，如果一个场景文件中含有多帧，请重新生成。
 ### 10.3.2VRStandalone请求示例
@@ -605,6 +608,7 @@ after_first_render|优先渲染类型|N|字符串||fullSpeed：优先渲染后�
 artist| 制作人 | N|字符串||制作人|
 environments|环境变量|N|字符串|512|设置系统的环境变量。| 
 priority| 优先级|N|整型||设置任务的优先级|
+user_remark| 备注 | N|字符串||任务备注|
 ### 10.4.1houdini请求示例
 layer_list是个json数组，里可以包含多个节点
  ```python
@@ -648,6 +652,7 @@ after_first_render|优先渲染类型|N|字符串||fullSpeed：优先渲染后�
 artist| 制作人 | N|字符串||制作人|
 plugin_name|渲染插件|N|字符串|512|多个插件以逗号分隔。|
 priority| 优先级|N|整型||设置任务的优先级|
+user_remark| 备注 | N|字符串||任务备注|
 ### 10.5.1Blender请求示例
  ```python
 {
