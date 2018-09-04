@@ -212,7 +212,7 @@ camera| 渲染相机| 字符串 |渲染相机|
 render_layer| 渲染层| 字符串 |渲染层|
 artist| 制作人| 字符串 |制作人|
 submit_account| 提交账号| 字符串 |提交该任务的实际账号|
-jobs| 任务详情| JSON数组 |只有当is_jobs_included为1时，此数据才会显示。<br>job_id：帧ID<br>job_name：帧名称<br>job_status：帧状态<br>start_time：开始时间，格式yyyyMMddHHmmss<br>end_time：结束时间，格式yyyyMMddHHmmss<br>consume_time：共耗时，单位s<br>log：渲染日志|
+jobs| 任务详情| JSON数组 |只有当is_jobs_included为1时，此数据才会显示。<br>job_id：帧ID<br>job_name：帧名称<br>job_status：帧状态<br>start_time：开始时间，格式yyyyMMddHHmmss<br>end_time：结束时间，格式yyyyMMddHHmmss<br>consume_time：共耗时，单位s<br>log：渲染日志<br>render_percent：渲染进度百分比|
 #### 7.1.2.3业务规则说明
 查询任务业务规则说明如下：
 1. 只能查询head参数中account用户（或其子账户）下的任务。
